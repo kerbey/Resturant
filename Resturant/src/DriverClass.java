@@ -4,12 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
 public class DriverClass
 {
 	static String recieptFile="receiptFile.txt",line=null;
-	int count=0;
-	static PrintWriter textStreamForCustomerReceipt = textfile.createTextWrite(recieptFile);
-	public static Scanner scanFile= textfile.createTextRead(recieptFile);
+	static int count=0, maxCount;
+	static PrintWriter textStream = textfile.createTextWrite(recieptFile);
 	public static void main(String[]args)
 	{	//go to food item class for menu which comes from category classes
 		//
@@ -17,7 +17,6 @@ public class DriverClass
 		//order is then written into a file
 		// store it into linked list classes? 
 		//CategoryList ll = new CategoryList();
-		
 		//d.update();
 		//GUIClass.Update button = d.new Update();
 		DriverClass D= new DriverClass();
@@ -34,16 +33,31 @@ public class DriverClass
 	}
 	public static class textfile
 	{
+
 		textfile()
 		{//build food
+			maxCount=count;
 			System.out.println("textfile method");
+			Scanner scanFile= textfile.createTextRead(recieptFile);
+			for(count=1;count< maxCount;count++)//fix limit
+			{
+				System.out.println("count= "+count);
+				count=scanFile.nextInt();
+				line = scanFile.nextLine();
+				if(line==null)
+				{
+					DriverClass D= new DriverClass();
+					DriverClass.excelfile food = D.new excelfile();
+				}
+				System.out.println(count + line);
+			}scanFile.close();
 			//GUIClass d= new GUIClass();
 			//GUIClass.buttonAction button = d.new buttonAction();
 			//scanFile.close();
 		}
 		public static PrintWriter createTextWrite(String S)
 		{
-			scanFile.close();
+			//textStream.close();
 			PrintWriter TStream=null;
 			try
 			{
@@ -72,12 +86,11 @@ public class DriverClass
 	}
 	public class excelfile
 	{
-		excelfile(){}
-	}
+		excelfile(){System.out.println("excelfilemethod");}
 	/*//Driverclass()
 	//public class excelfile{
 		//excelfile(){
-			public class ReadExcel {
+			//public class ReadExcel {
 				@SuppressWarnings({ "unchecked", "unchecked" })
 				//public static void main(String[] args) throws Exception {
 					// An excel file name. You can create a file name with a full
@@ -158,7 +171,7 @@ public class DriverClass
 						System.out.println("");
 					}
 				}
-			}
+			}*/
 			
-		}}*/
+		}
 	}
