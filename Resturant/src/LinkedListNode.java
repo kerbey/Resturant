@@ -1,30 +1,30 @@
-public class LinkedListNode
+public class LinkedListNode <T>
 {
-	private String data;
-	private LinkedListNode node;//data is head
+	private T data;
+	private LinkedListNode<T> node;//data is head
 	//private CategoryNode<T> node;
 	//CategoryNode<T> head, current;
 	/*public CategoryNode() {
 			head = null;
 		}*/
-	public LinkedListNode(String data)
+	public LinkedListNode(T data)
 	{
 		this.data=data;
 		this.node=null;
 	}
-	public String getData() {
+	public T getData() {
 		return data;
 	}
 
-	public LinkedListNode getPointer() {
+	public LinkedListNode<T> getPointer() {
 		return node;
 	}
 
-	public void setPointer(LinkedListNode node) {
+	public void setPointer(LinkedListNode<T> node) {
 		this.node = node;
 	}
 
-	public void setData(String data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 }
