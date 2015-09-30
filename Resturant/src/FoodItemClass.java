@@ -1,46 +1,77 @@
 public class FoodItemClass
 {
-	String name, food;double price;
+	String name, stringSize, food;double price, purchase;
+	int size;
 	public void Name(String Name)
 	{
 		 name=Name;
-		 System.out.println("namemethod= "+name);
+		// System.out.println("namemethod= "+name);
 	}
 	public void Price(double Price)
 	{
 		price=Price;
-		System.out.println("price method price= "+price);
+		System.out.println("initial price= "+price);
+		DriverClass.line=("initial price= "+price);
+		DriverClass.textStream.println(DriverClass.count+" "+DriverClass.line);
+		DriverClass.count++;
 	}
+	//price, quantity, name,descrip,size
+	//size quantity 
 	public void Quantity(double purchase, String name)
 	{
-		//LinkedList list= new LinkedList();
-		System.out.println("quantitymethod = "+name+" quantity= "+purchase);
 		Name(name);
+		//LinkedList list= new LinkedList();
+		System.out.println("quantity= "+purchase+" "+name+"(s)");
+		DriverClass.line=("quantity= "+purchase+" "+name+"(s)");
+		DriverClass.textStream.println(DriverClass.count+" "+DriverClass.line);
+		DriverClass.count++;
+		//Name(name);
 	}
 	public void Description(String string)
 	{
-		System.out.println("the description from the fooditem Class is = "+string+" for "+price);
+		System.out.println("the description => a "+stringSize+" sized "+string+" for "+price);
+		DriverClass.line=("the description => a "+stringSize+" sized "+string+" for "+price);
+		DriverClass.textStream.println(DriverClass.count+ " "+DriverClass.line);
+		DriverClass.count++;
+		//Size(size);
+		//System.out.println("you purchsed  "+purchase+" "+size+" "+name+" for $"+purchase+".");
 	}
 	public void Size(int size)
 	{
 		if (size==0)
 		{
-			System.out.println("you purchased a small "+name+" for $"+price);
+			stringSize="small";
+			System.out.println("you purchased  "+stringSize+" "+name+" for $"+price);
+			DriverClass.line=("you purchased  "+stringSize+" "+name+" for $"+price);
+			DriverClass.textStream.println(DriverClass.count+" "+DriverClass.line);
+			DriverClass.count++;
 		}
 		else if (size==1)
 		{
-			System.out.println("you purchased a medium "+name+" for $"+price);
+			stringSize="medium";
+			price=price+1;
+			System.out.println("you purchased  "+stringSize+" "+name+" for $"+(price));
+			DriverClass.line=("you purchased  "+stringSize+" "+name+" for $"+price);
+			DriverClass.textStream.println(DriverClass.count+" "+DriverClass.line);
+			DriverClass.count++;
 		}
 		else if(size==2)
 		{
-			System.out.println("you purchased a large "+name+" for $"+price);
+			stringSize="large";
+			price=price+2;
+			System.out.println("you purchased  "+stringSize+" "+name+" for $"+(price));
+			DriverClass.line=("you purchased  "+stringSize+" "+name+" for $"+price);
+			DriverClass.textStream.println(DriverClass.count+" "+DriverClass.line);
+			DriverClass.count++;
 		}
-		//System.out.println("size for "+name+" = "+size);
-		//(size+price)
+		Description(name);
 		//you want that in small medium or large windows pop up and you answer user decides some of these
 	}
 	public void SpecialOrder(String specialOrder)
 	{
 		System.out.println("you purchased "+specialOrder+" for $"+price);
+		DriverClass.line=("you purchased "+specialOrder+" for $"+price);
+		DriverClass.textStream.println(DriverClass.count+" "+DriverClass.line);
+		DriverClass.count++;
 	}
 }
