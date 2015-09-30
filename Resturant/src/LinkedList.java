@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.xml.soap.Node;
-public class LinkedList
+public class LinkedList <T>
 {
-	private String name;
-	LinkedListNode head, previous, tail, current, node;
-	public LinkedList(String name)
+	private T name;
+	LinkedListNode<T> head, previous, tail, current, node;
+	public LinkedList(T name)
 	{
 		this.name=name;
 	}
@@ -14,7 +14,7 @@ public class LinkedList
 	{
 		this.name= null;
 	}
-	public boolean Search(String Input)
+	public boolean Search(T Input)
 	{
 		//String search = (String) ("You're searching in the " + Input + " category.");
 		String search = (String) ("You're searching for the food " + Input + ".");
@@ -54,7 +54,7 @@ public class LinkedList
 		// this.head=this.head.getPointer();
 		return toString();
 	}*/
-	public String isEmpty() throws EmptyListException
+	public T isEmpty() throws EmptyListException
 	{
 		if (toString()=="")
 		{
@@ -65,11 +65,11 @@ public class LinkedList
 		{	
 			System.out.println("the list from inside the isempty method is  = "+toString()+"\n");
 		}
-		return toString();
+		return (T) toString();
 	}
-	public void Add(String data)
+	public void Add(T data)
 	{
-		LinkedListNode node= new LinkedListNode(data);
+		LinkedListNode<T> node= new LinkedListNode<T>(data);
 		System.out.println("node= "+node.getData());
 		if (head!=null)
 		{
@@ -83,11 +83,11 @@ public class LinkedList
 		//nodeList.add(this.head);
 		//System.out.println("this.head= "+this.head.getData());
 	}
-	public String getString()
+	public T getString()
 	{
-		return toString();
+		return (T) toString();
 	}
-	public void delete(String key)
+	public void delete(T key)
 	{
 		if (head==null)
 		{
@@ -139,6 +139,7 @@ public class LinkedList
 			current= (LinkedListNode) current.getPointer();
 		}
 		//System.out.println("the list from inside the toString method is  = "+list+"\n");
+		System.out.println("toString list ="+list);
 		//System.out.println("current= "+current);
 		return list;
 	}
