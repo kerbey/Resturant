@@ -1,8 +1,8 @@
-public class CategoryList
+public class CategoryList <T> 
 {
-	private String name;
-	CategoryNode head, previous, tail, current, node;
-	public CategoryList(String name)
+	private T name;//former string
+	CategoryNode<T> head, previous, tail, current, node;
+	public CategoryList(T name)
 	{
 		this.name=name;
 	}
@@ -10,7 +10,7 @@ public class CategoryList
 	{
 		this.name= null;
 	}
-	public boolean Search(String Input)
+	public boolean Search(T Input)
 	{
 		String search = "You're searching in the " + Input + " category.";
 		if (search!=null){
@@ -50,7 +50,7 @@ public class CategoryList
 		// this.head=this.head.getPointer();
 		return toString();
 	}*/
-	public String isEmpty() throws EmptyListException
+	public T isEmpty() throws EmptyListException
 	{
 		if (toString()=="")
 		{
@@ -61,29 +61,30 @@ public class CategoryList
 		{	
 			System.out.println("the list from inside the isempty method is  = "+toString()+"\n");
 		}
-		return toString();
+		return (T) toString();
 	}
-	public void Add(String data)
-	{
-		CategoryNode node= new CategoryNode(data);
+	public void Add(T data)//, String foodItem)
+	{//data=foodCategory;
+		CategoryNode<T> node= new CategoryNode<T>(data);//, foodItem);
 		System.out.println("node= "+node.getData());
 		if (head!=null)
 		{
 			node.setPointer(head);
-			//System.out.println("node= "+((CategoryNode) node.getPointer()).getData());
+			System.out.println("node= "+((CategoryNode) node.getPointer()).getData());
 			//head is assigned to node
 		//if it already isnt empty
 		}
 		//head gets assigned to node whether or not it has something
 		this.head=node;
 		//nodeList.add(this.head);
-		//System.out.println("this.head= "+this.head.getData());
+		System.out.println("this.head= "+this.head.getData());
+		//setFoodPointer(foodItem);
 	}
 	/*public String getString()
 	{
 		return toString();
 	}*/
-	public void delete(String key)
+	public void delete(T key)
 	{
 			if (head==null)
 			{
@@ -95,16 +96,20 @@ public class CategoryList
 				current=head;
 				//System.out.println("delete head ="+head.getData());
 				//System.out.println(" delete current=head "+current.getData());
-				//System.out.println("previous "+previous.getData());			
+				//System.out.println("previous "+previous.getData());	
+				//line below is a test
+				//tail=tail.setFoodPointer(toString());
 				while(current!=null&& !current.getData().equals(key))
 				{//current goes though this loop until it equals the string that was passed in
 				//then it gets moved to previous and current has to get the next current value
-			//that will break out of this loop
+			//that will break out of this loop because current is null
 					previous=current;
 					//System.out.println("current.getNext ="+current.getData());
 					////System.out.println("previous ="+previous.getData());
 					current=(CategoryNode) current.getPointer();
-					//System.out.println("current.getNext ="+current);	
+					//System.out.println("current.getNext ="+current);
+					//line below is a test
+					//tail= tail.getFoodPointer();
 				}
 			}
 			if(current==head && current.getData().equals(key))
