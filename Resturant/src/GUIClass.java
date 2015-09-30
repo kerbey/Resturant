@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+
 public class GUIClass extends JPanel implements ActionListener
 {
 	static String forGDrawing, food, order;
@@ -31,7 +33,6 @@ public class GUIClass extends JPanel implements ActionListener
 	counterOrangeJuice=0, counterVanillaIceCream=0, counterChocolateIceCream=0, counterStrawberryIceCream=0
 	,counterSteamedChicken=0, counterSlicedPork=0, counterRicePork=0, counterGrilledChicken=0, counterCrispyChickenSandwich=0
 	,counterFishSandwich=0, counterSteakRice=0, counterMashed=0, counterSpaghetti=0, counterLobster=0;
-
 	static CategoryList Clist = new CategoryList("meals");
 	FoodItemClass item= new FoodItemClass();
 	static LinkedList Llist = new LinkedList();
@@ -83,7 +84,7 @@ public class GUIClass extends JPanel implements ActionListener
 			public void actionPerformed(ActionEvent e)
 			{	
 				Input="breakfast";
-				Clist.Add(Input);
+				Clist.Add(Input);//unblock if test doesnt work
 				//System.out.println("arraylist ="+list.toString());
 				Clist.Search(Input);
 				breakfast();
@@ -210,7 +211,7 @@ public class GUIClass extends JPanel implements ActionListener
 				Input="lunch";
 				//Clist.Search(Input);
 				//System.out.println("arraylist ="+list.toString());
-				Clist.Add(Input);
+				Clist.Add(Input);// unblock if test wont work
 				lunch();
 			}
 		});
@@ -365,7 +366,7 @@ public class GUIClass extends JPanel implements ActionListener
 	{
 		System.out.println("breakfast method");
 		setForGDrawing("select your favorite food");
-		setFood("waffles (2.20), eggs (4.00), pancakes(5.23), bacon(2.20), orangejuice(5.50)");
+		setFood("waffles (2.21), eggs (4.01), pancakes(5.23), bacon(2.22), orangejuice(5.51)");
 		frame = new JFrame(" breakfast ");
 		frame.getContentPane().add( new GUIClass());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -377,99 +378,6 @@ public class GUIClass extends JPanel implements ActionListener
 		textbox= new JTextField(50);
 		textbox.setPreferredSize(new Dimension(300,100));
 		textPanel.add(textbox);
-
-		/*JButton waffles=new JButton("waffles");
-		waffles.addActionListener(this);
-		waffles.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterWaffles++;
-				Input="waffles (2.20)";
-				//LinkedList list = new LinkedList();
-				//list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				int wafflePurchase=(int) (2.20/counterWaffles);
-				//System.out.println("you pruchased "+wafflePurchase+" waffles");
-				food.Quantity(wafflePurchase);
-				//lunch();
-			}
-		});
-		buttonPanel.add(waffles);
-
-		JButton eggs=new JButton("eggs");
-		eggs.addActionListener(this);
-		eggs.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterEggs++;
-				Input="eggs";
-				//LinkedList list = new LinkedList();
-				//list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterEggs);
-				//lunch();
-			}
-		});
-		buttonPanel.add(eggs);
-
-		JButton pancakes=new JButton("pancakes");
-		pancakes.addActionListener(this);
-		pancakes.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterPancakes++;
-				Input="pancakes";
-				//LinkedList list = new LinkedList();
-				//list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterPancakes);
-				//lunch();
-			}
-		});
-		buttonPanel.add(pancakes);
-
-		JButton bacon=new JButton("bacon");
-		bacon.addActionListener(this);
-		bacon.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterBacon++;
-				Input="bacon";
-				//LinkedList list = new LinkedList();
-				//list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterBacon);
-				//lunch();
-			}
-		});
-		buttonPanel.add(bacon);
-
-		JButton orangejuice=new JButton("orangejuice");
-		orangejuice.addActionListener(this);
-		orangejuice.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterOrangeJuice++;
-				Input="orange juice";
-				//LinkedList list = new LinkedList();
-				//list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterOrangeJuice);
-				//lunch();
-			}
-		});
-		buttonPanel.add(orangejuice);*/
-
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
@@ -485,6 +393,7 @@ public class GUIClass extends JPanel implements ActionListener
 				setFood("");
 				Llist.Add(textbox.getText());
 				System.out.println("textboxgettext= "+textbox.getText());
+				// try doing add category after adding to the food list
 				Add();
 			}
 		});
@@ -548,19 +457,20 @@ public class GUIClass extends JPanel implements ActionListener
 		frame.setVisible(true);		
 	}	
 	public void orderBreakfast()
-	{//	("waffles (2.20), eggs (4.00), pancakes(5.23), bacon(2.20), orangejuice(5.50)");
-	 order=textbox.getText().toLowerCase();
+	{//	setFood("waffles (2.21), eggs (4.01), pancakes(5.23), bacon(2.22), orangejuice(5.51)");
+
+		order=textbox.getText().toLowerCase();
 		if(order.contains("waffles"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(2.20);
+			item.Price(2.21);
 			counterWaffles++;
 			item.Quantity(counterWaffles, order);
 		}
 		else if(order.contains("eggs"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(4.00);
+			item.Price(4.01);
 			CounterEggs++;
 			item.Quantity(CounterEggs, order);
 		}
@@ -574,14 +484,14 @@ public class GUIClass extends JPanel implements ActionListener
 		else if(order.contains("bacon"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(2.20);
+			item.Price(2.22);
 			counterBacon++;
 			item.Quantity(counterBacon, order);
 		}
 		else if(order.contains("orange juice"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(5.50);
+			item.Price(5.51);
 			counterOrangeJuice++;
 			item.Quantity(counterOrangeJuice, order);
 		}
@@ -590,7 +500,7 @@ public class GUIClass extends JPanel implements ActionListener
 	{
 		System.out.println("lunch method");
 		setForGDrawing("select your favorite food");
-		setFood("grilled chicken sandwich(4.40), crispyChickenSandwich(2.23), fishSandwich(1.12)");
+		setFood("grilled chicken sandwich(4.41), crispyChickenSandwich(2.23), fishSandwich(1.12)");
 		frame = new JFrame(" lunch ");
 		frame.getContentPane().add( new GUIClass());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -603,95 +513,7 @@ public class GUIClass extends JPanel implements ActionListener
 		textbox.setPreferredSize(new Dimension(300,100));
 		textPanel.add(textbox);
 		Llist.Add(textbox.getText());
-		/*JButton grilledChickenSandwich =new JButton("grilledChickenSandwich");
-		grilledChickenSandwich.addActionListener(this);
-		grilledChickenSandwich.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterGrilledChickenSandwich++;
-				Input="Grilled Chicken Sandwich";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterGrilledChickenSandwich);
-				//lunch();
-			}
-		});
-		buttonPanel.add(grilledChickenSandwich);
-
-		JButton crispyChickenSandwich=new JButton("crispyChickenSandwich");
-		crispyChickenSandwich.addActionListener(this);
-		crispyChickenSandwich.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterCrispyChickenSandwich++;
-				Input="crispy Chicken Sandwich";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterCrispyChickenSandwich);
-				//lunch();
-			}
-		});
-		buttonPanel.add(crispyChickenSandwich);
-
-		JButton spicyChickenSandwich= new JButton("spicyChickenSandwich");
-		spicyChickenSandwich.addActionListener(this);
-		spicyChickenSandwich.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterSpicyChickenSandwich++;
-				Input="Spicy Chicken Sandwich";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterSpicyChickenSandwich);
-				//lunch();
-			}
-		});
-		buttonPanel.add(spicyChickenSandwich);
-
-		JButton fishSandwich = new JButton("fishSandwich");
-		fishSandwich.addActionListener(this);
-		fishSandwich.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterFishSandwich++;
-				Input=" fish Sandwich";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterFishSandwich);
-				//lunch();
-			}
-		});
-		buttonPanel.add(fishSandwich);
-
-		JButton fries= new JButton("fries");
-		fries.addActionListener(this);
-		fries.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterFries++;
-				Input="fries";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterFries);
-				//lunch();
-			}
-		});
-		buttonPanel.add(fries);//*/
+		
 		JButton small=new JButton("small");
 		small.addActionListener(this);
 		small.addActionListener(new ActionListener()
@@ -761,7 +583,7 @@ public class GUIClass extends JPanel implements ActionListener
 		if(order.contains("grilled chicken sandwich"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(4.40);
+			item.Price(4.41);
 			counterGrilledChicken++;
 			item.Quantity(counterGrilledChicken, order);
 		}
@@ -784,7 +606,7 @@ public class GUIClass extends JPanel implements ActionListener
 	{
 		System.out.println("dinner method");
 		setForGDrawing("select your favorite food");
-		setFood("Steak and rice(4.44), mashedPotatoesWithGravy(3.00), spaghettiWithMeatBalls(8.99), LobsterWithSamon(6.55)");
+		setFood("Steak and rice(4.44), mashedPotatoesWithGravy(3.01), spaghettiWithMeatBalls(8.99), LobsterWithSamon(6.55)");
 		frame = new JFrame(" dinner ");
 		frame.getContentPane().add( new GUIClass());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -797,73 +619,6 @@ public class GUIClass extends JPanel implements ActionListener
 		textbox.setPreferredSize(new Dimension(300,100));
 		textPanel.add(textbox);
 		Llist.Add(textbox.getText());
-		/*JButton steakandrice= new JButton("steak and rice");
-		steakandrice.addActionListener(this);
-		steakandrice.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterSteakAndRice++;
-				Input=" Steak and rice";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterSteakAndRice);
-				//lunch();
-			}
-		});		buttonPanel.add(steakandrice);
-
-		JButton mashedPotatoesWithGravy = new JButton("mashed potatoes with gravy");
-		mashedPotatoesWithGravy.addActionListener(this);
-		mashedPotatoesWithGravy.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterMashedPotatoesWithGravy++;
-				Input="Mashed Potatoes with Gravy";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterMashedPotatoesWithGravy);
-				//lunch();
-			}
-		});		buttonPanel.add(mashedPotatoesWithGravy);
-
-		JButton spaghettiWithMeatBalls = new JButton("spaghettiWithMeatBalls");
-		spaghettiWithMeatBalls.addActionListener(this);
-		spaghettiWithMeatBalls.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterSpaghettiWithMeatBalls++;
-				Input="Spaghetti with MeatBalls";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterSpaghettiWithMeatBalls);
-				//lunch();
-			}
-		});		buttonPanel.add(spaghettiWithMeatBalls);
-
-		JButton LobsterWithSamon = new JButton("LobsterWithSamon");
-		LobsterWithSamon.addActionListener(this);
-		LobsterWithSamon.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	
-				counterLobsterWithSamon++;
-				Input="Lobster with Samon";
-				//LinkedList list = new LinkedList();
-				list.Add(Input);
-				FoodItemClass food= new FoodItemClass();
-				food.Quantity(counterLobsterWithSamon);
-				//lunch();
-			}
-		});		buttonPanel.add(LobsterWithSamon);//*/
 		JButton small=new JButton("small");
 		small.addActionListener(this);
 		small.addActionListener(new ActionListener()
@@ -939,7 +694,7 @@ public class GUIClass extends JPanel implements ActionListener
 		else if(order.contains("mashed potatoes with gravy"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(3.00);
+			item.Price(3.01);
 			counterMashed++;
 			item.Quantity(counterMashed, order);
 		}
@@ -962,7 +717,7 @@ public class GUIClass extends JPanel implements ActionListener
 	{
 		System.out.println("dessert");
 		setForGDrawing("select your favorite food");
-		setFood("VanillaIceCream(4.00), chocolateIceCream(4.00), strawberryIceCream(4.00)");
+		setFood("VanillaIceCream(4.01), chocolateIceCream(4.01), strawberryIceCream(4.01)");
 		frame = new JFrame(" desserts ");
 		frame.getContentPane().add( new GUIClass());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -1097,21 +852,21 @@ public class GUIClass extends JPanel implements ActionListener
 		if(order.contains("vanilla ice cream"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(4.00);
+			item.Price(4.01);
 			counterVanillaIceCream++;
 			item.Quantity(counterVanillaIceCream, order);
 		}
 		else if(order.contains("chocolate ice cream"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(4.00);
+			item.Price(4.01);
 			counterChocolateIceCream++;
 			item.Quantity(counterChocolateIceCream, order);
 		}
 		else if(order.contains("strawberry ice cream"))
 		{
 			System.out.println("textboxgettextt="+textbox.getText());
-			item.Price(4.00);
+			item.Price(4.01);
 			counterStrawberryIceCream++;
 			item.Quantity(counterStrawberryIceCream, order);
 		}
@@ -1148,7 +903,8 @@ public class GUIClass extends JPanel implements ActionListener
 				//DriverClass drive= new DriverClass();
 				//DriverClass.textfile button = drive.new textfile();
 				//DriverClass.textfile.textfile();
-				DriverClass.textfile.createTextRead(DriverClass.recieptFile);
+				DriverClass.textStream.close();
+				DriverClass.textfile nestedObject =new DriverClass.textfile();
 			}
 		});
 		no.addActionListener(this);
