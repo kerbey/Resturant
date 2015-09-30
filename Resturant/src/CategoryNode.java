@@ -1,18 +1,24 @@
-public class CategoryNode //<T>
+public class CategoryNode <T>
 {
-	private String data;
-	private CategoryNode node;//data is head
+	private T data;
+	private CategoryNode node, foodNode;//data is head
 	//private CategoryNode<T> node;
 	//CategoryNode<T> head, current;
 	/*public CategoryNode() {
-			head = null;
+			data = null;
 		}*/
-	public CategoryNode(String data)
+	public CategoryNode(T data)
 	{
 		this.data=data;
 		this.node=null;
 	}
-	public String getData() {
+	/*public CategoryNode(String data, String foodNode)//test constructor
+	{
+		this.data=data;
+		this.node=null;
+		this.foodNode=null;
+	}*/
+	public T getData() {
 		return data;
 	}
 
@@ -24,7 +30,14 @@ public class CategoryNode //<T>
 		this.node = node;
 	}
 
-	public void setData(String data) {
+	public void setData(T data) {
 		this.data = data;
+	//pointer for next node and another pointer gets to linked list class
 	}
+	/*public CategoryNode getFoodPointer() {
+		return foodNode;
+	}
+	public void setFoodPointer(CategoryNode foodNode) {
+		this.foodNode = foodNode;
+	}*/
 }
